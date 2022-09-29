@@ -13,7 +13,7 @@
 
 <body>
     <h1 style="text-align: center;font-family: Nunito;font-weight: 400">
-        Deployment Testing Update Update
+        Deployment Testing
     </h1>
 </body>
 
