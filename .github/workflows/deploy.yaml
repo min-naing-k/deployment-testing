@@ -19,7 +19,7 @@ jobs:
         with:
           host: 137.184.75.53
           username: root
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.actions.SSH_KEY }}
           port : 22
           script: |
             cd /var/www/laravel
