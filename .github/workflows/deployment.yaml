@@ -17,12 +17,12 @@ jobs:
       - name: Deployment Testing
         uses: appleboy/ssh-action@master
         with:
-          host : 137.184.75.53
+          host: 137.184.75.53
           username: root
           key: ${{ secrets.DEPLOYMENT_TESTING }}
           port : 22
           script: |
-            cd /var/www/laravel/public
+            cd /var/www/laravel
             git pull origin master
             composer install
             npm install
