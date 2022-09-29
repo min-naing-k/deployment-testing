@@ -1,0 +1,30 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 0 * * *' # Everyday at 12am
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment Testing
+        uses: appleboy/ssh-action@master
+        with:
+          host : 137.184.75.53
+          username: root
+          key: ${{ secrets.DEPLOYMENT_TESTING }}
+          port : 22
+          script: |
+            cd /var/www/laravel/public
+            git pull origin master
+            composer install
+            npm install
+            npm run build
+          # script for git pull, building, anything you want
